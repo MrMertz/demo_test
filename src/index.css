@@ -1,0 +1,134 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Fredoka Variable', 'Fredoka', ui-rounded, 'SF Pro Rounded', system-ui, sans-serif;
+  --color-forest: #3f8f4f;
+  --color-forest-dark: #2f6e3c;
+  --color-leaf: #8fd18a;
+  --color-sky: #8fd3f4;
+  --color-sun: #ffd35c;
+  --color-sun-dark: #e8a317;
+  --color-peach: #f59e4b;
+  --color-cream: #fff8ec;
+  --color-bark: #8b5e3c;
+  --color-ink: #3b2f2a;
+}
+
+:root {
+  color-scheme: light;
+  /* Størrelse på madgenstande – skalerer med skærmen */
+  --item-base: clamp(40px, min(8.2vw, 11vh), 86px);
+  --item: var(--item-base);
+}
+
+@media (orientation: portrait) {
+  :root {
+    --item-base: clamp(40px, min(13vw, 7.4vh), 80px);
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: #8fd3f4;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 4px solid #2f6e3c;
+  outline-offset: 3px;
+}
+
+svg {
+  -webkit-user-drag: none;
+}
+
+.screen {
+  position: relative;
+  height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
+  padding: max(10px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+}
+
+/* Store, bløde "trykbare" knapper med skygge, der giver en fysisk fornemmelse */
+.btn-chunky {
+  border: none;
+  box-shadow:
+    0 6px 0 var(--shadow, rgba(0, 0, 0, 0.18)),
+    0 10px 24px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.08s,
+    box-shadow 0.08s,
+    filter 0.2s;
+}
+.btn-chunky:active:not(:disabled) {
+  transform: translateY(5px);
+  box-shadow:
+    0 1px 0 var(--shadow, rgba(0, 0, 0, 0.18)),
+    0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Spilskærmens layout: landskab = dyr+tallerken til venstre, kurv til højre */
+.play-grid {
+  display: grid;
+  height: 100%;
+  gap: clamp(6px, 1.6vmin, 18px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    'stage basket'
+    'plate basket'
+    'plate action';
+}
+.play-grid.choose {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas:
+    'stage'
+    'bowls';
+}
+@media (orientation: portrait) {
+  .play-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    grid-template-areas:
+      'stage'
+      'plate'
+      'basket'
+      'action';
+  }
+}
+
+.basket-weave {
+  background-color: #c98a4b;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.09) 0 3px, transparent 3px 22px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.14) 0 9px, rgba(0, 0, 0, 0.06) 9px 18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
