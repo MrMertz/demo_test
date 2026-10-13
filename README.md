@@ -9,7 +9,10 @@ npm install
 npm run dev        # udviklingsserver
 npm run build      # produktionsbuild i dist/ (kan lægges på enhver statisk webserver)
 npm test           # enhedstests af opgavelogik, vurdering og fremdrift
+npm run build:single  # hele spillet som én fil: dist/dyrenes-madmission.html
 ```
+
+`build:single` samler spillet i én HTML-fil, der kan åbnes direkte i en browser (dobbeltklik) eller lægges op hvor som helst – uden server.
 
 ## Dyrene
 

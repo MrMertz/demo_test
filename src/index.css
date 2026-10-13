@@ -61,7 +61,7 @@ svg {
 
 .screen {
   position: relative;
-  height: 100dvh;
+  height: 100%;
   width: 100vw;
   overflow: hidden;
   padding: max(10px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom))
